@@ -22,7 +22,10 @@ public:
 public:
     int setPath(const char* path,const TLS_ENGINE_PATH_TYPE& type);
 public:
-    virtual TLSEndpoint* createEndpoint(const IOEndpoint& endpoint);
+    virtual IOEndpoint* createEndpoint(const Model& model);
+    virtual IOEndpoint* createEndpoint(const IOEndpoint& endpoint);
+    virtual IOEndpoint* createEndpoint(const char* address, const unsigned short& port, const IOEndpointType& type);
+
 };
 namespaceEnd
 EXTERN_C_END

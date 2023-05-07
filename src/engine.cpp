@@ -44,7 +44,13 @@ static struct tls_versions tls_versions_instance[] = {
     {"tlsv1.0", "tlsv1.0"},
 };
 
-TLSEndpoint* io_event_tls_engine::createEndpoint(const IOEndpoint& endpoint){
+IOEndpoint* io_event_tls_engine::createEndpoint(const Model& model){
+    TLSEndpoint* tls_endpoint = new TLSEndpoint();
+
+    return tls_endpoint;
+}
+
+IOEndpoint* io_event_tls_engine::createEndpoint(const IOEndpoint& endpoint){
     int socket = endpoint.getSocket();
     TLSEndpoint* tls_endpoint = new TLSEndpoint();
     char* ciphers = "default";//tls_config.c tls_config_set_ciphers
@@ -76,5 +82,11 @@ TLSEndpoint* io_event_tls_engine::createEndpoint(const IOEndpoint& endpoint){
         std::cout << "failed to configure server: %s" << tls_error(tls_endpoint->context) << std::endl;
     tls_config_free(server_cfg);
     tls_accept_socket(tls_endpoint->context, &client, socket);
+    return tls_endpoint;
+}
+
+IOEndpoint* createEndpoint(const char* address, const unsigned short& port, const IOEndpointType& type){
+    TLSEndpoint* tls_endpoint = new TLSEndpoint();
+
     return tls_endpoint;
 }
