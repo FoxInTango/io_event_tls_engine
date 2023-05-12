@@ -17,6 +17,8 @@ public:
 public:
     tls* context;
 public:
+    virtual int handle();
+public:
     virtual IOEndpointStatus status();
     virtual int socket() const;
 public:

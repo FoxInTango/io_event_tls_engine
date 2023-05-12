@@ -85,7 +85,7 @@ IOEndpoint* io_event_tls_engine::createEndpoint(const IOEndpoint& endpoint){
     return tls_endpoint;
 }
 
-IOEndpoint* createEndpoint(const char* address, const unsigned short& port, const IOEndpointType& type){
+IOEndpoint* io_event_tls_engine::createEndpoint(const char* address, const unsigned short& port, const IOEndpointType& type){
     TLSEndpoint* tls_endpoint = new TLSEndpoint();
 
     return tls_endpoint;
