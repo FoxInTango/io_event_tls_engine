@@ -4,7 +4,7 @@
 #include <libstream/libstream.h>
 #include <libioevent/libioevent.h>
 
-#include <tls.h>
+//#include <tls.h>
 
 EXTERN_C_BEGIN
 namespaceBegin(foxintango)
@@ -15,7 +15,7 @@ public:
     TLSEndpoint();
     virtual ~TLSEndpoint();
 public:
-    tls* context;
+    //tls* context;
 public:
     virtual int handle();
 public:

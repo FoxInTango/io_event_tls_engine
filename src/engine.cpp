@@ -3,7 +3,7 @@
 #include "TLSStream.h"
 using namespace foxintango;
 #include <iostream>
-#include <tls.h>
+//#include <tls.h>
 
 namespaceBegin(foxintango)
 class io_event_tls_engine_implement {
@@ -52,8 +52,11 @@ IOEndpoint* io_event_tls_engine::createEndpoint(const Model& model){
 
 IOEndpoint* io_event_tls_engine::createEndpoint(const IOEndpoint& endpoint){
 
+
     int socket = endpoint.socketID();
+    
     TLSEndpoint* tls_endpoint = new TLSEndpoint();
+    /*
     char* ciphers = "default";//tls_config.c tls_config_set_ciphers
     struct tls_config* client_cfg, * server_cfg;
     struct tls* client;
@@ -75,14 +78,15 @@ IOEndpoint* io_event_tls_engine::createEndpoint(const IOEndpoint& endpoint){
     if (tls_config_set_ca_path(server_cfg,this->implement->ca_strore_path)){
         std::cout << "failed to set ca path: %s" << tls_config_error(server_cfg) << std::endl;
     }
-    /*
+    
     if (tls_config_set_ca_file(server_cfg, cafile) == -1)
         std::cout << "failed to set ca: %s" << tls_config_error(client_cfg) << std::endl;
-    */
+    
     if (tls_configure(tls_endpoint->context, server_cfg) == -1)
         std::cout << "failed to configure server: %s" << tls_error(tls_endpoint->context) << std::endl;
     tls_config_free(server_cfg);
     tls_accept_socket(tls_endpoint->context, &client, socket);
+    */
     return tls_endpoint;
 }
 
